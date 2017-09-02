@@ -2,6 +2,7 @@ package com.example.nazaifmoideen.blog;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -65,7 +66,8 @@ public class AuthActivity extends AppCompatActivity {
             public void onResponse(Call<messageResponse> call, Response<messageResponse> response) {
                 showProgressDialog(false);
                 if (response.isSuccessful()) {
-                    alertShow("welcome",response.body().getMessage());
+               navigatetoArticleListActivity();
+
                 }else {
                     try {
                         String errorMessage = response.errorBody().string();
@@ -80,6 +82,7 @@ public class AuthActivity extends AppCompatActivity {
                         e.printStackTrace();
                         alertShow("something wrong."," Signin failed");
                     }
+
                 }
             }
 
@@ -105,7 +108,7 @@ public class AuthActivity extends AppCompatActivity {
                                 String errorMessage = response.errorBody().string();
                                 try {
                                     ErrorResponse errorResponse = new Gson().fromJson(errorMessage,ErrorResponse.class);
-                                    alertShow("Regn in failed",errorResponse.getError());
+                                    alertShow("Regn failed",errorResponse.getError());
                                 }catch (JsonSyntaxException e){
                                     e.printStackTrace();
                                     alertShow("something wrong."," Regn failed");
@@ -123,6 +126,7 @@ public class AuthActivity extends AppCompatActivity {
                         showProgressDialog(false);
                     }
                 });
+
     }
 
 
@@ -161,6 +165,14 @@ public class AuthActivity extends AppCompatActivity {
         builder.show();
     }
 
+    private void navigatetoArticleListActivity(){
+        Intent i = new Intent(this, ArticleListActivity.class);
+        startActivity(i);
+    }
+
+
+
+    /*
     class signinTask extends AsyncTask<String, Void , Boolean>{
 
         String mockusername = "ijas";
@@ -195,5 +207,5 @@ public class AuthActivity extends AppCompatActivity {
         }
 
 
-    }
+    }*/
 }

@@ -4,4 +4,5 @@
     <string name="password_hint">Enter password</string>
     <string name="btn_signin">Sign in</string>
     <string name="btn_register">Register</string>
+    <string name="article_list_textview">ARTICLES</string>
 </resources>

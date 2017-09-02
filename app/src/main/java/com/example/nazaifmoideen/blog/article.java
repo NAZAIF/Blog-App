@@ -5,4 +5,6 @@ package com.example.nazaifmoideen.blog;
  */
 
 public class article {
+
+    int i;
 }

@@ -1,7 +1,10 @@
 package com.example.nazaifmoideen.blog;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -16,4 +19,6 @@ public interface APIinterface {
     @POST(NetworkURL.REGISTRATION)
     Call<messageResponse> registration(@Body AuthRequest Body);
 
+    @GET(NetworkURL.ARTGET)
+    Call<List<article>> getarticles();
 }
